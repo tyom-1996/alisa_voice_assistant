@@ -17,7 +17,6 @@ function Gideon(){
   })
 
   this.random_answer = (array)=>{
-    console.log(array)
     let num = Math.floor(Math.random() * array.length - 1) + 1;
     array[num].answer()
   }
@@ -25,8 +24,7 @@ function Gideon(){
   this.say = (text)=>{
     console.log('micrafon off')
     this.recognition.stop()
-    this.speak = new Audio('https://code.responsivevoice.org/getvoice.php?t='+text+'&tl=ru&sv=g1&vn=&pitch=0.4&rate=0.5&vol=1&gender=female');
-    console.log(this.speak)
+    this.speak = new Audio('https://code.responsivevoice.org/getvoice.php?t='+text+'&tl=ru&sv=g1&vn=&pitch=0.5&rate=0.5&vol=1&gender=female');
     this.speak.id = 'id'
     this.speak.play()
   }
@@ -50,6 +48,7 @@ function Gideon(){
   this.start = () => {
       window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
       this.recognition = new window.SpeechRecognition();
+      this.recognition.lang = 'ru-RU';
       this.recognition.maxAlternatives = 1;
   //  this.recognition.continuous = true;
       this.recognition.interimResults = true;
